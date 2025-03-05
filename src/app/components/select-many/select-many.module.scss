@@ -37,7 +37,7 @@ $icon-size: 24px;
   gap: 4px;
   flex-direction: row;
 }
-.select-many__bar__selected {
+.select-many__bar__picked {
   @include radius;
   color: white;
   display: flex;
