@@ -35,7 +35,7 @@ $select-many-width: 245px;
 }
 .select-many__item {
   text-wrap-mode: nowrap;
-  padding: 8 8 8 16;
+  padding: 8px 8px 8px 16px;
   overflow-x: scroll;
   scrollbar-width: none;
 }
@@ -64,7 +64,7 @@ $select-many-width: 245px;
   display: flex;
   text-wrap-mode: nowrap;
   align-items: center;
-  padding: 0 0 0 8px;
+  padding: 0px 0px 0px 8px;
   background-color: $bar-item-color;
 }
 .select-many__bar__items__selecting-item {
