@@ -27,13 +27,14 @@ $icon-size: 24px;
 .select-many__bar {
   display: flex;
   padding: 8px;
+  gap: 2px;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
 .select-many__bar__items {
   display: flex;
-  gap: 2px;
+  gap: 4px;
   flex-direction: row;
 }
 .select-many__bar__selected {
