@@ -1,11 +1,16 @@
 $main-color: #70C05B;
-$selected-color: #FCD5BA;
+$selected-item-color: #FCD5BA;
+$bar-item-color: #FF6633;
+
+@mixin radius {
+  border-radius: 4px;
+}
 
 .select-many {
+  @include radius;
   border-width: 1px;
   border-color: $main-color;
   border-style: solid;
-  border-radius: 4px;
 
   display: flex;
   flex-direction: column;
@@ -16,5 +21,20 @@ $selected-color: #FCD5BA;
   padding: 8 8 8 16;
 }
 .select-many__item__selected {
-  background-color: $selected-color;
+  background-color: $selected-item-color;
+}
+.select-many__bar {
+  display: flex;
+  padding: 8px;
+  gap: 2px;
+  flex-direction: row;
+}
+.select-many__bar__selected {
+  @include radius;
+  color: white;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  padding: 0 8px 0 8px;
+  background-color: $bar-item-color;
 }
