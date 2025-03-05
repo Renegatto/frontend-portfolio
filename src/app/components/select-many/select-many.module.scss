@@ -1,0 +1,20 @@
+$main-color: #70C05B;
+$selected-color: #FCD5BA;
+
+.select-many {
+  border-width: 1px;
+  border-color: $main-color;
+  border-style: solid;
+  border-radius: 4px;
+
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 8px 16px rgba($main-color, 0.2);
+}
+.select-many__item {
+  width: 246px;
+  padding: 8 8 8 16;
+}
+.select-many__item__selected {
+  background-color: $selected-color;
+}
