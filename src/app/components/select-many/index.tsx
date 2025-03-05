@@ -1,5 +1,5 @@
 'use client'
-import { DetailedHTMLProps, FC, HTMLAttributes, ReactElement, ReactNode, useRef, useState } from "react";
+import { FC, ReactElement, ReactNode, useState } from "react";
 import styles from './select-many.module.scss'
 import clsx from "clsx";
 import Image from 'next/image'
@@ -144,7 +144,8 @@ const DropdownButton: FC<{
   const [expanded,setExpanded] = useState(false)
   const handleClick = () => {
     setExpanded(x => !x)
-    expanded ? onCollapse() : onExpand()
+    if (expanded) onCollapse()
+    else onExpand()
   }
   return <div
     onClick={handleClick}
@@ -159,11 +160,3 @@ const DropdownArrow: FC<{isUp: boolean}> = ({isUp}) =>
     style={{rotate: isUp ? '0deg' : '180deg'}}
     alt='dropdown arrow'
   />
-
-const useKeys = (): { key: number, newKey: () => void } => {
-  const [key,setKey] = useState(0)
-  return {
-    key,
-    newKey: () => setKey(k => k + 1)
-  }
-}
