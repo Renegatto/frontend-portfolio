@@ -1,5 +1,5 @@
 'use client'
-import { DetailedHTMLProps, FC, HTMLAttributes, ReactElement, ReactNode, useState } from "react";
+import { DetailedHTMLProps, FC, HTMLAttributes, ReactElement, ReactNode, useRef, useState } from "react";
 import styles from './select-many.module.scss'
 import clsx from "clsx";
 import Image from 'next/image'
@@ -16,7 +16,7 @@ export const SelectManyExample: FC = () => {
       [0,[0, <>Item 0</>]],
       [1,[1, <>Item 1</>]],
       [2,[2, <>Item 2</>]],
-      [3,[3, <>Item 3</>]],
+      [3,[3, <>Item 3 scroll with Shift+Mouse wheel. Here it is.</>]],
       [4,[4, <>Item 4</>]],
     ])}
     Option={([key,content], onClick) => <Item key={key} onClick={onClick}>{content}</Item>}
@@ -37,14 +37,23 @@ const Picked: FC<{children: ReactElement, onUnpick: () => void}> = ({onUnpick, c
     </div>
   </div>
 
-const SelectBar: FC<{selectedElements: ReactElement[]}> = ({selectedElements}) =>
+type SelectBarProps = {
+  selectedElements: ReactElement[],
+  onCollapse: () => void,
+  onExpand: () => void,
+}
+
+const SelectBar: FC<SelectBarProps> = ({selectedElements, onExpand, onCollapse}) =>
   <div className={styles['select-many__bar']}>
-    <div className={styles['select-many__bar__items']}>
+    <div
+      className={styles['select-many__bar__items']}
+    >
       {selectedElements}
       <Selecting/>
     </div>
-    <DropdownArrow isUp={false}/>
+    <DropdownButton onExpand={onExpand} onCollapse={onCollapse}/>
   </div>
+
 
 const Item: FC<{
   children: ReactElement,
@@ -77,22 +86,28 @@ const SelectMany = <K,T>({initiallyPicked, items, Picked, Option}: SelectManyPro
     .filter(([id]) => !picked.includes(id))
   const handlePick = (id: K) => setPicked([...picked,id])
   const handleUnpick = (id: K) => setPicked(picked.filter(k => k !== id))
+  const [expandOptions,setExpandOptions] = useState(false)
   const OptionListC = OptionList<[K,T]>
   return <div className={styles['select-many']}>
-    <SelectBar
-      selectedElements={
-        picked.flatMap(id => {
-          const item = items.get(id)
-          return typeof item === 'undefined' ? [] : [Picked(item,() => handleUnpick(id))]
-        }) 
-      }
-    />
-    <OptionListC
-      onPicked={([id]) => handlePick(id)}
-      options={options}
-      Option={([,item],onClick) => Option(item,onClick)}
-    />
-
+    <div className={styles['select-list__background']}>
+      <SelectBar
+        selectedElements={
+          picked.flatMap(id => {
+            const item = items.get(id)
+            return typeof item === 'undefined' ? [] : [Picked(item,() => handleUnpick(id))]
+          }) 
+        }
+        onExpand={() => setExpandOptions(true)}
+        onCollapse={() => setExpandOptions(false)}
+      />
+      <div hidden={!expandOptions}>
+        <OptionListC
+          onPicked={([id]) => handlePick(id)}
+          options={options}
+          Option={([,item],onClick) => Option(item,onClick)}
+        />
+      </div>
+    </div>
   </div>
 }
 
@@ -121,6 +136,22 @@ const CloseIcon: FC = () =>
     src={CloseIconSvg}
     alt='close'
   />
+
+const DropdownButton: FC<{
+  onExpand: () => void,
+  onCollapse: () => void,
+}> = ({onExpand, onCollapse}) => {
+  const [expanded,setExpanded] = useState(false)
+  const handleClick = () => {
+    setExpanded(x => !x)
+    expanded ? onCollapse() : onExpand()
+  }
+  return <div
+    onClick={handleClick}
+  >
+    <DropdownArrow isUp={!expanded}/>
+  </div>
+}
 
 const DropdownArrow: FC<{isUp: boolean}> = ({isUp}) =>
   <Image
