@@ -1,7 +1,8 @@
 import { FC, ReactElement } from "react";
 import styles from './select-many.module.scss'
 import clsx from "clsx";
-
+import Image from 'next/image'
+import DropdownArrowSvg from './dropdown-arrow.svg'
 export const SelectManyExample: FC = () =>
   <SelectMany
     options={[
@@ -20,7 +21,12 @@ const Selected: FC<{children: ReactElement}> = ({children}) =>
 
 const SelectBar: FC<{selectedElements: ReactElement[]}> = ({selectedElements}) =>
   <div className={styles['select-many__bar']}>
-    {selectedElements}
+    <div className={styles['select-many__bar__items']}>
+      {selectedElements}
+    </div>
+    <div className={styles['select-many__bar__arrow']}>
+      <DropdownArrow isUp={false}/>
+    </div>
   </div>
 
 const Item: FC<{children: ReactElement, selected: boolean}> = ({children,selected}) =>
@@ -35,3 +41,11 @@ const SelectMany: FC<{options: ReactElement[]}> = ({options}) => {
     {options}
   </div>
 }
+
+const DropdownArrow: FC<{isUp: boolean}> = ({isUp}) =>
+  <Image
+    src={DropdownArrowSvg}
+    width={13}
+    style={{rotate: isUp ? '-90deg' : '90deg'}}
+    alt='dropdown arrow'
+  />
