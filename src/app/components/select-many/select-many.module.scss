@@ -17,6 +17,10 @@ $icon-size: 24px;
   flex-direction: column;
   box-shadow: 4px 8px 16px rgba($main-color, 0.2);
 }
+.select-many__option-list {
+  display: flex;
+  flex-direction: column;
+}
 .select-many__item {
   width: 246px;
   padding: 8 8 8 16;

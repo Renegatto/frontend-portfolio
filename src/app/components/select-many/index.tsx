@@ -1,5 +1,5 @@
 'use client'
-import { DetailedHTMLProps, FC, HTMLAttributes, ReactElement, useState } from "react";
+import { DetailedHTMLProps, FC, HTMLAttributes, ReactElement, ReactNode, useState } from "react";
 import styles from './select-many.module.scss'
 import clsx from "clsx";
 import Image from 'next/image'
@@ -9,7 +9,7 @@ import SelectingSvg from "./selecting.svg"
 
 
 export const SelectManyExample: FC = () => { 
-  const SelectManyTuple = SelectMany<number,[number,ReactElement]>()
+  const SelectManyTuple = SelectMany<number,[number,ReactElement]>
   return <SelectManyTuple
     initiallyPicked={[1,2]}
     items={new Map([
@@ -64,18 +64,20 @@ const Item: FC<{
   </div>
 }
 
-const SelectMany = <K,T>(): FC<{
+type SelectManyProps<K,T> = {
   initiallyPicked: K[],
   items: Map<K,T>,
   Picked: (item: T, onUnpick: () => void) => ReactElement,
   Option: (item: T, onClick: () => void) => ReactElement,
-}> => ({initiallyPicked, items, Picked, Option}) => {
+}
+
+const SelectMany = <K,T>({initiallyPicked, items, Picked, Option}: SelectManyProps<K,T>): ReactNode => {
   const [picked, setPicked] = useState<K[]>(initiallyPicked)
   const options = [...items.entries()]
     .filter(([id]) => !picked.includes(id))
   const handlePick = (id: K) => setPicked([...picked,id])
   const handleUnpick = (id: K) => setPicked(picked.filter(k => k !== id))
- 
+  const OptionListC = OptionList<[K,T]>
   return <div className={styles['select-many']}>
     <SelectBar
       selectedElements={
@@ -85,11 +87,26 @@ const SelectMany = <K,T>(): FC<{
         }) 
       }
     />
-    {options.map(([id,option]) =>
-      Option(option,() => handlePick(id)))
-    }
+    <OptionListC
+      onPicked={([id]) => handlePick(id)}
+      options={options}
+      Option={([,item],onClick) => Option(item,onClick)}
+    />
+
   </div>
 }
+
+type OptionListProps<T> = {
+  options: T[],
+  onPicked: (picked: T) => void,
+  Option: (item: T, onClick: () => void) => ReactElement,
+}
+const OptionList = <T,>({options, onPicked, Option}: OptionListProps<T>): ReactNode =>
+  <div className={styles['select-many__option-list']}>{
+    options.map(option =>
+      Option(option,() => onPicked(option)))
+  }
+  </div>
 
 const Selecting: FC = () =>
   <div className={styles['select-many__bar__items__selecting-item']}>
@@ -98,7 +115,6 @@ const Selecting: FC = () =>
       alt='close'
     />
   </div>
-
 
 const CloseIcon: FC = () =>
   <Image
