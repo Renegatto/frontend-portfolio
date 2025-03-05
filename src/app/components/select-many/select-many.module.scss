@@ -1,6 +1,7 @@
 $main-color: #70C05B;
 $selected-item-color: #FCD5BA;
 $bar-item-color: #FF6633;
+$icon-size: 24px;
 
 @mixin radius {
   border-radius: 4px;
@@ -35,19 +36,15 @@ $bar-item-color: #FF6633;
   gap: 2px;
   flex-direction: row;
 }
-.select-many__bar__arrow {
-  width: 24px;
-  height: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .select-many__bar__selected {
   @include radius;
   color: white;
-  height: 24px;
   display: flex;
   align-items: center;
-  padding: 0 8px 0 8px;
+  padding: 0 0 0 8px;
   background-color: $bar-item-color;
+}
+.select-many__bar__items__selecting-item {
+  display: flex;
+  align-items: center;
 }

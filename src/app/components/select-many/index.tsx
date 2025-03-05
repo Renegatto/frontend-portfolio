@@ -3,36 +3,45 @@ import styles from './select-many.module.scss'
 import clsx from "clsx";
 import Image from 'next/image'
 import DropdownArrowSvg from './dropdown-arrow.svg'
+import CloseIconSvg from "./close-icon.svg"
+import SelectingSvg from "./selecting.svg"
+
 export const SelectManyExample: FC = () =>
   <SelectMany
     options={[
       <SelectBar key={-1} selectedElements={[
-        <Selected key={0}>{<>Crazyyyyy</>}</Selected>,
-        <Selected key={1}>{<>Frog</>}</Selected>,
+        <Selected key={0}>{<>Item 1</>}</Selected>,
+        <Selected key={1}>{<>Item 2</>}</Selected>,
       ]}/>,
-      <Item key={0} selected={false}>{<>Option 1</>}</Item>,
-      <Item key={1} selected={true}>{<>Option 2</>}</Item>,
-      <Item key={2} selected={false}>{<>Option 3</>}</Item>,
+      <Item key={0} selected={false}>{<>Item 3</>}</Item>,
+      <Item key={1} selected={true}>{<>Item 4</>}</Item>,
+      <Item key={2} selected={false}>{<>Item 5</>}</Item>,
     ]}
   />
 
 const Selected: FC<{children: ReactElement}> = ({children}) =>
-  <div className={styles['select-many__bar__selected']}>{children}</div>
+  <div className={styles['select-many__bar__selected']}
+  >
+    {children}
+    <CloseIcon/>
+  </div>
 
 const SelectBar: FC<{selectedElements: ReactElement[]}> = ({selectedElements}) =>
   <div className={styles['select-many__bar']}>
     <div className={styles['select-many__bar__items']}>
       {selectedElements}
+      <Selecting/>
     </div>
-    <div className={styles['select-many__bar__arrow']}>
-      <DropdownArrow isUp={false}/>
-    </div>
+    <DropdownArrow isUp={false}/>
   </div>
 
 const Item: FC<{children: ReactElement, selected: boolean}> = ({children,selected}) =>
-  <div className={
-    clsx(styles['select-many__item'], selected ? styles['select-many__item__selected'] : undefined)
-  }>{children}
+  <div
+    className={
+      clsx(styles['select-many__item'], selected ? styles['select-many__item__selected'] : undefined)
+    }
+  >
+    {children}
   </div>
 
 const SelectMany: FC<{options: ReactElement[]}> = ({options}) => {
@@ -42,10 +51,24 @@ const SelectMany: FC<{options: ReactElement[]}> = ({options}) => {
   </div>
 }
 
+const Selecting: FC = () =>
+  <div className={styles['select-many__bar__items__selecting-item']}>
+    <Image
+      src={SelectingSvg}
+      alt='close'
+    />
+  </div>
+
+
+const CloseIcon: FC = () =>
+  <Image
+    src={CloseIconSvg}
+    alt='close'
+  />
+
 const DropdownArrow: FC<{isUp: boolean}> = ({isUp}) =>
   <Image
     src={DropdownArrowSvg}
-    width={13}
-    style={{rotate: isUp ? '-90deg' : '90deg'}}
+    style={{rotate: isUp ? '0deg' : '180deg'}}
     alt='dropdown arrow'
   />
