@@ -1,11 +1,11 @@
 import styles from "./page.module.css";
-import { SelectManyExample } from "./components/select-many";
+import { FlowerShopFrontPage } from "./examples/flower-shop/page";
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <SelectManyExample/>
+        <FlowerShopFrontPage/>
       </main>
       <footer className={styles.footer}>
       </footer>
