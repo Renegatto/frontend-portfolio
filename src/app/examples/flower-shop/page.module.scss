@@ -46,8 +46,7 @@ $color-background-light: #EDF4E2;
   justify-content: space-between;
   align-items: center;
   position: sticky;
-  top: 0px;
-  right: 0px;
+  inset: 0px;
   height: 80;
 
   background-color: $color-background-light;
