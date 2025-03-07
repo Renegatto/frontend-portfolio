@@ -1,6 +1,18 @@
-$main-color: #70C05B;
-$selected-item-color: #FCD5BA;
-$bar-item-color: #FF6633;
+:root {
+  --main-color: #70C05B;
+  --selected-item-color: #FCD5BA;
+  --bar-item-color: #FF6633; 
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-color: #2b4737;
+    --selected-item-color: #1b2e35;
+    --bar-item-color: #006961;
+  }
+}
+
+
 $icon-size: 24px;
 $select-many-width: 245px;
 
@@ -14,14 +26,14 @@ $select-many-width: 245px;
 }
 
 .select-many {
-  width: $select-many-width;
+  width: var(--select-many-width);
 
   display: flex;
   flex-direction: column;
 }
 
 .select-list__background {
-  background-color: white;
+  background-color: var(--background);
 
   display: inline-block;
   position: absolute;
@@ -32,10 +44,10 @@ $select-many-width: 245px;
 
   @include radius;
   border-width: 1px;
-  border-color: $main-color;
+  border-color: var(--main-color);
   border-style: solid;
 
-  box-shadow: 4px 8px 16px rgba($main-color, 0.2);
+  box-shadow: 4px 8px 16px color-mix(in srgb, var(--main-color) 60%, transparent);
 }
 .select-many__item {
   padding: 8px 8px 8px 16px;
@@ -46,7 +58,7 @@ $select-many-width: 245px;
   scrollbar-width: none;
 }
 .select-many__item__selected {
-  background-color: $selected-item-color;
+  background-color: var(--selected-item-color);
 }
 .select-many__bar {
   display: flex;
@@ -71,7 +83,7 @@ $select-many-width: 245px;
   text-wrap-mode: nowrap;
   align-items: center;
   padding: 0px 0px 0px 8px;
-  background-color: $bar-item-color;
+  background-color: var(--bar-item-color);
 }
 .select-many__bar__items__selecting-item {
   display: flex;
