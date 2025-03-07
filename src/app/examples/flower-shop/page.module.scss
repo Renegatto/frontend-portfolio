@@ -65,3 +65,38 @@ $color-background-light: #EDF4E2;
   padding: 16px;
   gap: 16px;
 }
+
+.contents__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 179px;
+  gap: 16px;
+  padding: 10px 20px 10px 20px;
+}
+
+.add-to-cart-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  height: 40px;
+  gap: 6px;
+
+  background-color: $color-button-background;
+  border-style: none;
+  border-radius: 100px;
+
+  color: var(--background);
+  padding: 10 24 10 16
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.center-text {
+  text-align: center;
+}

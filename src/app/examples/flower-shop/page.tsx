@@ -34,9 +34,9 @@ const SearchBar = () => <div className={styles['search-bar']}>
 </div>
 
 const AddToCartBtn: FC<{disabled: boolean}> = ({disabled}) =>
-  <button disabled={disabled}>
-    <AddOutlinedIcon/>
-    <div>В КОРЗИНУ</div>
+  <button className={styles['add-to-cart-btn']} disabled={disabled}>
+    <AddOutlinedIcon sx={{fontSize: 18}}/>
+    <div className={styles['center']}>В КОРЗИНУ</div>
   </button>
 
 type Dimensions = {
@@ -52,10 +52,10 @@ const Item: FC<{
   description: string,
   price: number,
   inCart: boolean,
-}> = ({image, description, price, inCart}) => <div>
+}> = ({image, description, price, inCart}) => <div className={styles['contents__item']}>
   <Image alt='product-item' height={itemDimensions.height} width={itemDimensions.width} src={image}/>
-  <div>{description}</div>
-  <div>{Number(price).toFixed(2).toString()} BYN</div>
+  <div className={styles['center-text']}>{description}</div>
+  <div className={styles['center-text']}>{Number(price).toFixed(2).toString()} BYN</div>
   <AddToCartBtn disabled={inCart}/>
 </div>
 
