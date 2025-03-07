@@ -36,3 +36,20 @@ $color-background-light: #EDF4E2;
 .navbar__icon {
   padding: 16px;
 }
+
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 412;
+  height: 80;
+
+  background-color: $color-background-light;
+  padding: 0px 16px 0px 4px;
+}
+.search-bar__search-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+}

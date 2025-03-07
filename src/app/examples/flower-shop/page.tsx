@@ -26,9 +26,11 @@ const NavBtn: FC<{Icon: FC, title?: string}> = ({Icon, title}) =>
     <div className={styles['navbar__button__text']}>{title}</div>
   </div>
 
-const SearchBar = () => <div>
-  <NavBtn Icon={SearchOutlinedIcon}/>
-  <NavBtn Icon={TuneOutlinedIcon}/>
+const SearchBar = () => <div className={styles['search-bar']}>
+  <div className={styles['search-bar__search-icon-container']}>
+    <SearchOutlinedIcon sx={{fontSize: 40, padding: '0px 8px 0px 8px'}}/>
+  </div>
+  <TuneOutlinedIcon sx={{fontSize: 56, padding: '16px' }}/>
 </div>
 
 const AddToCartBtn: FC<{disabled: boolean}> = ({disabled}) =>
