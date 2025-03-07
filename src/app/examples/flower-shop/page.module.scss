@@ -3,8 +3,8 @@ $color-icon-solid: #424D30;
 $color-button-background: #739936;
 $color-background-light: #EDF4E2;
 
-.page {
-  padding: 0px;
+.main {
+  overflow-y: scroll;
 }
 
 .header {
@@ -45,6 +45,10 @@ $color-background-light: #EDF4E2;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  right: 0px;
   // width: 412;
   height: 80;
 
