@@ -1,7 +1,17 @@
-$color-primary: #D4E1BF;
-$color-icon-solid: #424D30;
-$color-button-background: #739936;
-$color-background-light: #EDF4E2;
+:root {
+  --color-primary: #D4E1BF;
+  --color-icon-solid: #424D30;
+  --color-button-background: #739936;
+  --color-background-light: #EDF4E2;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #0c1513;
+    --color-icon-solid: #90bad2;
+    --color-button-background: #064f77;
+    --color-background-light: #2a3e3a;
+  }
+}
 
 $item-gap: 16px;
 
@@ -13,7 +23,7 @@ $item-gap: 16px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: $color-primary;
+  background-color: var(--color-primary);
   padding: 4px 16px 4px 16px;
 }
 .logo {
@@ -38,9 +48,11 @@ $item-gap: 16px;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
+  color: var(--color-icon-solid)
 }
 .navbar__icon {
   padding: 16px;
+  color: var(--color-icon-solid)
 }
 
 .search-bar {
@@ -51,7 +63,8 @@ $item-gap: 16px;
   inset: 0px;
   height: 80;
 
-  background-color: $color-background-light;
+  color: var(--color-icon-solid);
+  background-color: var(--color-background-light);
   padding: 0px 16px 0px 4px;
 }
 .search-bar__search-icon-container {
@@ -76,6 +89,7 @@ $item-gap: 16px;
   justify-content: space-between;
   align-items: center;
   width: 179px;
+  color: var(--color-background-light);
   gap: $item-gap;
   padding: 10px 20px 10px 20px;
 }
@@ -96,7 +110,7 @@ $item-gap: 16px;
   height: 40px;
   gap: 6px;
 
-  background-color: $color-button-background;
+  background-color: var(--color-button-background);
   border-style: none;
   border-radius: 100px;
 
@@ -128,5 +142,6 @@ $item-gap: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: $color-icon-solid;
+  background-color: var(--color-background-light);
+  color: var(--color-icon-solid);
 }
