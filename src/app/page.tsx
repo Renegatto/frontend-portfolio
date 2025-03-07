@@ -1,5 +1,5 @@
-import styles from "./page.module.css";
-import { FlowerShopFrontPage } from "./examples/flower-shop/page";
+//import styles from "./page.module.css";
+import { FlowerShopFrontPage } from "./examples/flower-shop";
 
 export default function Home() {
   return (
