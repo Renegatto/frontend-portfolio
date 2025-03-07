@@ -1,0 +1,38 @@
+$color-primary: #D4E1BF;
+$color-icon-solid: #424D30;
+$color-button-background: #739936;
+$color-background-light: #EDF4E2;
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: $color-primary;
+  padding: 4px 16px 4px 16px;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+.navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.navbar__button {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 56px;
+}
+.navbar__button__text {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.navbar__icon {
+  padding: 16px;
+}

@@ -13,15 +13,17 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import { FC } from 'react';
 
 const NavBar: FC = () =>
-  <div>
+  <div className={styles['navbar']}>
     <NavBtn Icon={MenuOutlinedIcon} title='Меню'/>
     <NavBtn Icon={LocalPhoneOutlinedIcon} title='Связаться с нами'/>
     <NavBtn Icon={RoomOutlinedIcon} title='Адреса магазинов'/>
   </div>
 const NavBtn: FC<{Icon: FC, title?: string}> = ({Icon, title}) =>
-  <div>
-    <Icon/>
-    {title}
+  <div className={styles['navbar__button']}>
+    <div className={styles['navbar__icon']}>
+      <Icon/>
+    </div>
+    <div className={styles['navbar__button__text']}>{title}</div>
   </div>
 
 const SearchBar = () => <div>
@@ -100,11 +102,16 @@ const Contents = () => <div>
   />
 </div>
 
+const Logo = () => 
+  <div className={styles['logo']}>
+    <Image width={138} height={142} alt='logo' src={logoImg}/>
+  </div>
+
 export function FlowerShopFrontPage() {
   return (
     <div className={styles['page']}>
       <header className={styles['header']}>
-        <Image width={138} height={142} alt='logo' src={logoImg}/>
+        <Logo/>
         <NavBar/>
       </header>
       <main className={styles['main']}>
