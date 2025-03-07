@@ -10,6 +10,7 @@ import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { FC } from 'react';
 
 const NavBar: FC = () =>
@@ -109,6 +110,11 @@ const Logo = () =>
     <Image width={138} height={142} alt='logo' src={logoImg}/>
   </div>
 
+const CartButton = () =>
+  <button className={styles['cart-button']}>
+    <ShoppingCartOutlinedIcon sx={{fontSize: 30}}/>
+  </button>
+
 export function FlowerShopFrontPage() {
   return (
     <div className={styles['page']}>
@@ -121,6 +127,7 @@ export function FlowerShopFrontPage() {
         <Contents/>
       </main>
       <footer className={styles['footer']}>
+        <CartButton/>
       </footer>
     </div>
   );
