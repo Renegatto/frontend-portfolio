@@ -3,6 +3,8 @@ $color-icon-solid: #424D30;
 $color-button-background: #739936;
 $color-background-light: #EDF4E2;
 
+$item-gap: 16px;
+
 .page {
   height: 100vh;
 }
@@ -64,17 +66,25 @@ $color-background-light: #EDF4E2;
   flex-direction: row;
   flex-wrap: wrap;
   padding: 16px;
-  gap: 16px;
+  gap: $item-gap;
 }
 
+$item-gap: 16px;
 .contents__item {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   width: 179px;
-  gap: 16px;
+  gap: $item-gap;
   padding: 10px 20px 10px 20px;
+}
+.contents__item__bottom-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: $item-gap;
+  align-items: center;
 }
 
 .add-to-cart-btn {

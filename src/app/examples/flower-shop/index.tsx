@@ -56,8 +56,10 @@ const Item: FC<{
 }> = ({image, description, price, inCart}) => <div className={styles['contents__item']}>
   <Image alt='product-item' height={itemDimensions.height} width={itemDimensions.width} src={image}/>
   <div className={styles['center-text']}>{description}</div>
-  <div className={styles['center-text']}>{Number(price).toFixed(2).toString()} BYN</div>
-  <AddToCartBtn disabled={inCart}/>
+  <div className={styles['contents__item__bottom-container']}>
+    <div className={styles['center-text']}>{Number(price).toFixed(2).toString()} BYN</div>
+    <AddToCartBtn disabled={inCart}/>
+  </div>
 </div>
 
 const Contents = () => <div className={styles['contents']}>
