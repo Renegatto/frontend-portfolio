@@ -1,12 +1,20 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --color-primary: #D4E1BF;
+  --color-icon-solid: #424D30;
+  --color-button-background: #739936;
+  --color-background-light: #EDF4E2;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --color-primary: #0c1513;
+    --color-icon-solid: #90bad2;
+    --color-button-background: #064f77;
+    --color-background-light: #2a3e3a;
   }
 }
 
