@@ -59,7 +59,7 @@ const Item: FC<{
   <AddToCartBtn disabled={inCart}/>
 </div>
 
-const Contents = () => <div>
+const Contents = () => <div className={styles['contents']}>
   <Item
     image={whiteRosesImg}
     description={'Тюльпаны (поштучно)'}
