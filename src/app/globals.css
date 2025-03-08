@@ -5,6 +5,7 @@
   --color-icon-solid: #424D30;
   --color-button-background: #739936;
   --color-background-light: #EDF4E2;
+  --color-button-text: var(--background);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,8 +14,9 @@
     --foreground: #ededed;
     --color-primary: #0c1513;
     --color-icon-solid: #90bad2;
-    --color-button-background: #064f77;
-    --color-background-light: #2a3e3a;
+    --color-button-background: #00342d;
+    --color-background-light: #192724;
+    --color-button-text: #bce7ff;
   }
 }
 

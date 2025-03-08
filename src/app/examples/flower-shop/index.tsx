@@ -12,6 +12,7 @@ import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { FC } from 'react';
 
@@ -39,8 +40,19 @@ const SearchBar = () => <div className={styles['search-bar']}>
 const AddToCartBtn: FC<{disabled: boolean}> = ({disabled}) =>
   <button className={styles['add-to-cart-btn']} disabled={disabled}>
     <AddOutlinedIcon sx={{fontSize: 18}}/>
-    <div className={styles['center']}>В КОРЗИНУ</div>
+    <div className={styles['center']}><b>В КОРЗИНУ</b></div>
   </button>
+
+const ManageCartItemBtn: FC<{amount: number}> = ({amount}) =>
+  <div className={styles['manage-cart-item']}>
+    <button className={styles['manage-cart-item__btn']}>
+      <AddOutlinedIcon sx={{fontSize: 24}}/>
+    </button>
+    <div className={styles['center']}>{amount}</div>
+    <button className={styles['manage-cart-item__btn']}>
+      <RemoveOutlinedIcon sx={{fontSize: 24}}/>
+    </button>
+  </div>
 
 type Dimensions = {
   width: number,
@@ -60,7 +72,7 @@ const Item: FC<{
   <div className={styles['center-text']}>{description}</div>
   <div className={styles['contents__item__bottom-container']}>
     <div className={styles['center-text']}>{Number(price).toFixed(2).toString()} BYN</div>
-    <AddToCartBtn disabled={inCart}/>
+    {inCart ? <ManageCartItemBtn amount={5}/> : <AddToCartBtn disabled={false}/>}
   </div>
 </div>
 
