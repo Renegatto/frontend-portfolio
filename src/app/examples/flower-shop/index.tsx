@@ -1,8 +1,10 @@
+'use client'
 import styles from './page.module.scss';
 import logoImg from '../../../../resources/flower-shop/logo.png'
 import whiteRosesImg from '../../../../resources/flower-shop/white-roses.jpeg'
 import rosesImg from '../../../../resources/flower-shop/roses.jpg'
 
+import Badge from '@mui/material/Badge';
 import Image, { StaticImageData } from 'next/image'
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
@@ -114,7 +116,12 @@ const Logo = () =>
 
 const CartButton = () =>
   <button className={styles['cart-button']}>
-    <ShoppingCartOutlinedIcon sx={{fontSize: 30}}/>
+    <Badge badgeContent={3} color="error">
+      <ShoppingCartOutlinedIcon sx={{fontSize: 30}}/>
+    </Badge>
+    <div className={styles['cart-button__amount']}>
+      <b>330 BYN</b>
+    </div>
   </button>
 
 export function FlowerShopFrontPage() {
