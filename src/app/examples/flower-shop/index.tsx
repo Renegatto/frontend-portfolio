@@ -91,7 +91,7 @@ const Item: FC<{
         alt="product-item"
       />
       <CardContent>
-        {description}ccdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+        {description}
       </CardContent>
     </div>
     <div className={styles['contents__item__bottom-container']}>
@@ -109,7 +109,7 @@ const Item: FC<{
 const Contents = () => <div className={styles['contents']}>
   <Item
     image={whiteRosesImg}
-    description={'Тюльпаны (поштучно)'}
+    description={'Тюльпаны (поштучно) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt nulla non dui tempus fringilla. Etiam eu condimentum ex. Sed blandit suscipit nulla ac volutpat. Nulla eu commodo nibh. Nulla.'}
     price={6.00}
     inCart={false}
   />
