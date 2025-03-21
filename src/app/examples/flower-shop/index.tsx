@@ -15,7 +15,7 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { FC } from 'react';
-import { Button, Card, CardActions, CardContent, CardMedia, createTheme, Fab, IconButton, ThemeProvider } from '@mui/material';
+import { Button, Card, CardActions, CardContent, CardMedia, createTheme, Fab, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, ThemeProvider } from '@mui/material';
 
 const theme = createTheme({
   palette: {
@@ -30,18 +30,23 @@ const theme = createTheme({
 });
 
 const NavBar: FC = () =>
-  <div className={styles['navbar']}>
+  <List> 
     <NavBtn Icon={MenuOutlinedIcon} title='Меню'/>
     <NavBtn Icon={LocalPhoneOutlinedIcon} title='Связаться с нами'/>
     <NavBtn Icon={RoomOutlinedIcon} title='Адреса магазинов'/>
-  </div>
+  </List>
+
 const NavBtn: FC<{Icon: FC, title?: string}> = ({Icon, title}) =>
-  <div className={styles['navbar__button']}>
-    <div className={styles['navbar__icon']}>
-      <Icon/>
-    </div>
-    <div className={styles['navbar__button__text']}>{title}</div>
-  </div>
+  <ListItem>
+    <ListItemButton onClick={() => console.log(`clicked ${title}`)}>
+      <ListItemIcon>
+        <Icon/>
+      </ListItemIcon>
+      <ListItemText>
+        {title}
+      </ListItemText>
+    </ListItemButton>
+  </ListItem>
 
 const SearchBar = () => <div className={styles['search-bar']}>
   <div className={styles['search-bar__search-icon-container']}>
