@@ -45,6 +45,7 @@ $item-gap: 16px;
   justify-content: space-between;
   align-items: center;
   position: sticky;
+  z-index: 1;
   inset: 0px;
   height: 80;
 
@@ -68,92 +69,42 @@ $item-gap: 16px;
 }
 
 $item-gap: 16px;
+
 .contents__item {
+  width: 180px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  width: 179px;
-  color: var(--foreground);
-  gap: $item-gap;
-  padding: 10px 20px 10px 20px;
+  word-wrap: break-word;
 }
 .contents__item__bottom-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: $item-gap;
   align-items: center;
+  width: 100%;
 }
 
 $card-button-width: 140px;
-.add-to-cart-btn {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-
-  width: $card-button-width;
-  height: 40px;
-
-  background-color: var(--color-button-background);
-  border-style: none;
-  border-radius: 100px;
-
-  color: var(--color-button-text);
-  padding: 10px 24px 10px 16px;
-}
 .manage-cart-item {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 
-  width: $card-button-width;
+  width: 100%;
 }
-.manage-cart-item__btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px;
-  border-radius: 100%;
-  border-style: none;
 
-  background-color: var(--color-button-background);
-  color: var(--color-button-text);
-}
 .center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.center-text {
-  text-align: center;
-}
 
-.cart-button {
-  min-width: 86px;
-  height: 86px;
-
+button.cart-button__fab {
+  bottom: 0px;
+  right: 0px;
   position: fixed;
-  bottom: 0;
-  right: 0;
-
-  margin: 24px;
-
-  border-style: none;
-  border-radius: 28px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 4px;
-  background-color: var(--color-background-light);
-  color: var(--color-icon-solid);
-  padding: 0.7rem;
-}
-.cart-button__amount {
-  text-wrap: nowrap;
-  color: var(--foreground);
+  margin: 1rem;
+  gap: 10px; // a badge radius 
 }

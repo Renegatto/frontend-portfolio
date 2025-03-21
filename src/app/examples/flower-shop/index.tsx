@@ -15,6 +15,19 @@ import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { FC } from 'react';
+import { Button, Card, CardActions, CardContent, CardMedia, createTheme, Fab, IconButton, ThemeProvider } from '@mui/material';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#739936',
+    },
+    secondary: {
+      main: '#AEC51E',
+      contrastText: '#47008F',
+    },
+  },
+});
 
 const NavBar: FC = () =>
   <div className={styles['navbar']}>
@@ -38,20 +51,20 @@ const SearchBar = () => <div className={styles['search-bar']}>
 </div>
 
 const AddToCartBtn: FC<{disabled: boolean}> = ({disabled}) =>
-  <button className={styles['add-to-cart-btn']} disabled={disabled}>
+  <Button fullWidth variant="contained" disabled={disabled}>
     <AddOutlinedIcon sx={{fontSize: 18}}/>
     <div className={styles['center']}><b>В КОРЗИНУ</b></div>
-  </button>
+  </Button>
 
 const ManageCartItemBtn: FC<{amount: number}> = ({amount}) =>
   <div className={styles['manage-cart-item']}>
-    <button className={styles['manage-cart-item__btn']}>
+    <IconButton>
       <AddOutlinedIcon sx={{fontSize: 24}}/>
-    </button>
+    </IconButton>
     <div className={styles['center']}>{amount}</div>
-    <button className={styles['manage-cart-item__btn']}>
+    <IconButton>
       <RemoveOutlinedIcon sx={{fontSize: 24}}/>
-    </button>
+    </IconButton>
   </div>
 
 type Dimensions = {
@@ -67,14 +80,31 @@ const Item: FC<{
   description: string,
   price: number,
   inCart: boolean,
-}> = ({image, description, price, inCart}) => <div className={styles['contents__item']}>
-  <Image alt='product-item' height={itemDimensions.height} width={itemDimensions.width} src={image}/>
-  <div className={styles['center-text']}>{description}</div>
-  <div className={styles['contents__item__bottom-container']}>
-    <div className={styles['center-text']}>{Number(price).toFixed(2).toString()} BYN</div>
-    {inCart ? <ManageCartItemBtn amount={5}/> : <AddToCartBtn disabled={false}/>}
-  </div>
-</div>
+}> = ({image, description, price, inCart}) =>
+  <Card  classes={{root: styles['contents__item']}}>
+    <div>
+      <CardMedia
+        component="img"
+        height={itemDimensions.height}
+        width={itemDimensions.width}
+        src={image.src}
+        alt="product-item"
+      />
+      <CardContent>
+        {description}ccdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+      </CardContent>
+    </div>
+    <div className={styles['contents__item__bottom-container']}>
+      <CardContent sx={{width: '100%'}}>
+        <b>
+          {Number(price).toFixed(2).toString()} BYN
+        </b>
+      </CardContent>
+      <CardActions sx={{width: '100%'}}>
+        {inCart ? <ManageCartItemBtn amount={5}/> : <AddToCartBtn disabled={false}/>}
+      </CardActions>
+    </div>
+  </Card>
 
 const Contents = () => <div className={styles['contents']}>
   <Item
@@ -127,29 +157,33 @@ const Logo = () =>
   </div>
 
 const CartButton = () =>
-  <button className={styles['cart-button']}>
+  <Fab variant="extended" color='primary'
+    classes={{
+      root: styles['cart-button__fab']
+    }}
+  >
     <Badge badgeContent={3} color="error">
-      <ShoppingCartOutlinedIcon sx={{fontSize: 30}}/>
+      <ShoppingCartOutlinedIcon sx={{fontSize: 24}}/>
     </Badge>
-    <div className={styles['cart-button__amount']}>
-      <b>330 BYN</b>
-    </div>
-  </button>
+    <b>330 BYN</b>
+  </Fab>
 
 export function FlowerShopFrontPage() {
   return (
-    <div className={styles['page']}>
-      <header className={styles['header']}>
-        <Logo/>
-        <NavBar/>
-      </header>
-      <main className={styles['main']}>
-        <SearchBar/>
-        <Contents/>
-      </main>
-      <footer className={styles['footer']}>
-        <CartButton/>
-      </footer>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className={styles['page']}>
+        <header className={styles['header']}>
+          <Logo/>
+          <NavBar/>
+        </header>
+        <main className={styles['main']}>
+          <SearchBar/>
+          <Contents/>
+        </main>
+        <footer className={styles['footer']}>
+          <CartButton/>
+        </footer>
+      </div>
+    </ThemeProvider>
   );
 }
