@@ -30,14 +30,14 @@ const theme = createTheme({
 });
 
 const NavBar: FC = () =>
-  <List> 
+  <List sx={{gap: '0px'}}> 
     <NavBtn Icon={MenuOutlinedIcon} title='Меню'/>
     <NavBtn Icon={LocalPhoneOutlinedIcon} title='Связаться с нами'/>
     <NavBtn Icon={RoomOutlinedIcon} title='Адреса магазинов'/>
   </List>
 
 const NavBtn: FC<{Icon: FC, title?: string}> = ({Icon, title}) =>
-  <ListItem>
+  <ListItem sx={{padding: '0px'}}>
     <ListItemButton onClick={() => console.log(`clicked ${title}`)}>
       <ListItemIcon>
         <Icon/>
